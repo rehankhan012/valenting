@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My little darling ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    height:100vh;
+    background:#000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Poppins',sans-serif;
+    overflow:hidden;
+    color:white;
+}
+
+/* Ring Box Animation */
+.ringBox{
+    font-size:90px;
+    cursor:pointer;
+    animation:boxBounce 2s infinite;
+    z-index:2;
+}
+
+@keyframes boxBounce{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.15);}
+    100%{transform:scale(1);}
+}
+
+.container{display:none;text-align:center;z-index:2;}
+
+h1{
+    font-family:'Great Vibes',cursive;
+    font-size:48px;
+    margin-bottom:20px;
+}
+
+button{
+    padding:12px 24px;
+    margin:8px;
+    border:none;
+    border-radius:30px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.yes{
+    background:linear-gradient(45deg,#ff4e88,#ff99ac);
+    color:white;
+}
+
+.no{
+    background:white;
+    color:#ff4e88;
+    position:relative;
+}
+
+/* Letter Screen */
+.letterScreen{
+    position:fixed;
+    width:100%;
+    height:100%;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    background-image:url('YOUR_PHOTO_LINK_HERE');
+    background-size:cover;
+    background-position:center;
+}
+
+/* Dark overlay */
+.overlay{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.75);
+}
+
+/* Petals */
+.petal{
+    position:absolute;
+    width:25px;
+    height:25px;
+    background-image:url('https://i.imgur.com/9Xn6H9F.png');
+    background-size:cover;
+    animation:fall linear infinite;
+    opacity:0.9;
+    z-index:1;
+}
+
+@keyframes fall{
+    0%{transform:translateY(-10vh) rotate(0deg);}
+    100%{transform:translateY(110vh) rotate(360deg);}
+}
+
+.letterBox{
+    position:relative;
+    max-width:500px;
+    background:rgba(0,0,0,0.85);
+    padding:30px;
+    border-radius:15px;
+    z-index:2;
+    box-shadow:0 0 40px rgba(255,78,136,0.6);
+}
+
+.letterBox h2{
+    font-family:'Great Vibes',cursive;
+    color:#ff4e88;
+    margin-bottom:15px;
+}
+
+.typewriter{
+    line-height:1.8;
+    white-space:pre-line;
+}
+
+/* Sparkle Forever */
+.sparkle{
+    color:#ff4e88;
+    animation:spark 1s infinite alternate;
+}
+
+@keyframes spark{
+    from{text-shadow:0 0 5px #ff4e88;}
+    to{text-shadow:0 0 20px #ff99ac;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="ringBox" onclick="openProposal()">🎁💍</div>
+
+<div class="container" id="mainContent">
+    <h1>My little darling ❤️</h1>
+    <button class="yes" onclick="showLetter()">Yes 💖</button>
+    <button class="no" id="noBtn">No 😅</button>
+</div>
+
+<div class="letterScreen" id="letterScreen">
+    <div class="overlay"></div>
+    <div class="letterBox">
+        <h2>To My little darling ❤️</h2>
+        <div class="typewriter" id="letterText"></div>
+    </div>
+</div>
+
+<script>
+
+/* No button runs */
+const noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("mouseover",()=>{
+    noBtn.style.position="absolute";
+    noBtn.style.top=Math.random()*80+"%";
+    noBtn.style.left=Math.random()*80+"%";
+});
+
+function openProposal(){
+    document.querySelector(".ringBox").style.display="none";
+    document.getElementById("mainContent").style.display="block";
+}
+
+/* Typewriter Message */
+const message = `From the moment you came into my life,
+everything changed.
+
+You are my peace, my happiness,
+my safe place.
+
+I don’t want just moments.
+I want a lifetime.
+I want every tomorrow.
+I want every dream.
+
+If love had a meaning,
+it would be you.
+
+And if eternity exists,
+I want it with you.
+
+I choose you.
+Today.
+Tomorrow.
+And <span class="sparkle">Forever</span>. ❤️`;
+
+let i=0;
+
+function showLetter(){
+    document.getElementById("mainContent").style.display="none";
+    document.getElementById("letterScreen").style.display="flex";
+    startPetals();
+    typeWriter();
+}
+
+function typeWriter(){
+    if(i < message.length){
+        document.getElementById("letterText").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeWriter, 35);
+    }
+}
+
+/* Petals */
+function startPetals(){
+    for(let i=0;i<40;i++){
+        let petal=document.createElement("div");
+        petal.classList.add("petal");
+        petal.style.left=Math.random()*100+"vw";
+        petal.style.animationDuration=(6+Math.random()*4)+"s";
+        document.body.appendChild(petal);
+        setTimeout(()=>{petal.remove();},10000);
+    }
+}
+
+</script>
+
+</body>
+</html>

@@ -21,9 +21,9 @@ body{
     color:white;
 }
 
-/* Ring Box Animation */
+/* Ring Box */
 .ringBox{
-    font-size:90px;
+    font-size:95px;
     cursor:pointer;
     animation:boxBounce 2s infinite;
     z-index:2;
@@ -35,7 +35,11 @@ body{
     100%{transform:scale(1);}
 }
 
-.container{display:none;text-align:center;z-index:2;}
+.container{
+    display:none;
+    text-align:center;
+    z-index:2;
+}
 
 h1{
     font-family:'Great Vibes',cursive;
@@ -50,6 +54,7 @@ button{
     border-radius:30px;
     font-size:16px;
     cursor:pointer;
+    transition:0.3s;
 }
 
 .yes{
@@ -71,7 +76,7 @@ button{
     display:none;
     justify-content:center;
     align-items:center;
-    background-image:url('YOUR_PHOTO_LINK_HERE');
+    background-image:url('YOUR_PHOTO_LINK_HERE'); /* INSERT PHOTO HERE */
     background-size:cover;
     background-position:center;
 }
@@ -84,7 +89,7 @@ button{
     background:rgba(0,0,0,0.75);
 }
 
-/* Petals */
+/* Rose Petals */
 .petal{
     position:absolute;
     width:25px;
@@ -155,7 +160,7 @@ button{
 
 <script>
 
-/* No button runs */
+/* No button runs away */
 const noBtn=document.getElementById("noBtn");
 noBtn.addEventListener("mouseover",()=>{
     noBtn.style.position="absolute";
@@ -163,6 +168,7 @@ noBtn.addEventListener("mouseover",()=>{
     noBtn.style.left=Math.random()*80+"%";
 });
 
+/* Open Proposal */
 function openProposal(){
     document.querySelector(".ringBox").style.display="none";
     document.getElementById("mainContent").style.display="block";
@@ -189,7 +195,7 @@ I want it with you.
 I choose you.
 Today.
 Tomorrow.
-forever❤️😘💕❤️😘💕;
+And <span class="sparkle">Forever</span>. ❤️`;
 
 let i=0;
 
@@ -208,7 +214,7 @@ function typeWriter(){
     }
 }
 
-/* Petals */
+/* Falling Petals */
 function startPetals(){
     for(let i=0;i<40;i++){
         let petal=document.createElement("div");
